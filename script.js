@@ -1,12 +1,24 @@
-var Person = function(config){
-	this.name = config.name;
-	this.occupation = config.occupation;
+var Person = Backbone.Model.extend({
+	defaults:{
+		name :"nitesh",
+		occupation :"web designer"
+	},
 
-};
+	greet: function(){
+		console.log(this.get("name"));
+	},
 
-Person.prototype.greet = function(){
-	console.log(this.name);
-};
+	initialize: function(){
+		console.log("init");
+	}
+});
+
+var person = new Person({
+	name: "mayank",
+	occupation: "hr",
+	age: 23
+});
+
 
 
 
