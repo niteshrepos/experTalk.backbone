@@ -8,10 +8,27 @@ var Person = Backbone.Model.extend({
 		console.log(this.get("name"));
 	},
 
+});
+
+var PersonView = Backbone.View.extend({
+	tagName: "li",
+
+	id: "person",
+
+	template: _.template("<b><%= name %></b> <i><%= occupation %></i>"),
+
+	className :"person",
+
 	initialize: function(){
-		console.log("init");
+
+		var html = this.template(this.model.toJSON())
+		this.$el.html(html);
+
+		// this.$el.html(this.model.get("name")+this.model.get("occupation") );
 	}
 });
+
+
 
 var person = new Person({
 	name: "mayank",
@@ -19,6 +36,11 @@ var person = new Person({
 	age: 23
 });
 
+var personView = new PersonView({
+	model: person
+});
+
+$("body").append(personView.el)
 
 
 
