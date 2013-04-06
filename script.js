@@ -30,17 +30,19 @@ var PersonView = Backbone.View.extend({
 
 
 
-var person = new Person({
-	name: "mayank",
-	occupation: "hr",
-	age: 23
+var People = Backbone.Collection.extend({
+	model: Person
 });
 
-var personView = new PersonView({
-	model: person
-});
 
-$("body").append(personView.el)
+var people = new People([{
+	name: "nitesh",
+	occupation: "web designer"
+},{
+	name: "sanjeev",
+	occupation: "dev"
+}]);
 
 
 
+console.log(people);
